@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   def new
-    
+    if current_user
+      @me = HTTParty.get("https://jawbone.com/nudge/api/users/@me", :headers => { "Authorization" => User.find(current_user).access_token })
+      
+    end
   end
 
   def create
