@@ -1,0 +1,18 @@
+<% if current_user %>
+
+<h1>Welcome <%= current_user.first_name %></h1>
+<%= link_to "Log Out", session_path("current"), method: "delete" %>
+
+<% else %>
+
+  <%= form_tag("https://jawbone.com/auth/oauth2/auth", method: "get") do %>
+    <%= hidden_field_tag(:response_type, "code") %>
+    <%= hidden_field_tag(:client_id, ENV["JAWBONE_CLIENT_ID"]) %>
+    <%= hidden_field_tag(:scope, "basic_read extended_info sleep_read") %>
+    <%= hidden_field_tag(:redirect_uri, "http://localhost:3000/auth") %>
+    <%= submit_tag("Log In With Jawbone") %>
+  <% end %>
+
+<% end %>
+
+
