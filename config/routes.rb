@@ -1,4 +1,6 @@
 Getmoresleep::Application.routes.draw do
+  root :to => 'static_pages#welcome'
+  match 'auth' => 'static_pages#auth'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
