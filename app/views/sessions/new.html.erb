@@ -2,7 +2,14 @@
 
 <h1>Welcome <%= current_user.first_name %></h1>
 <%= link_to "Log Out", session_path("current"), method: "delete" %>
-<%= @me %>
+
+<div>
+  You woke up at: <%= Time.at @time %>
+</div>
+<%= image_tag "https://jawbone.com/#{@sleep_image}" %>
+
+<%= image_tag "https://jawbone.com/#{@image}" %>
+
 
 <% else %>
 
