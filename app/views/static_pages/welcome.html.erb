@@ -1,13 +1,7 @@
-Hello
-
 <%= form_tag("https://jawbone.com/auth/oauth2/auth", method: "get") do %>
-  <%= label_tag(:response_type, "Repsonse Type:") %>
-  <%= text_field_tag(:response_type) %><br>
-  <%= label_tag(:client_id, "Client ID:") %>
-  <%= text_field_tag(:client_id) %><br>
-  <%= label_tag(:scope, "Scope:") %>
-  <%= text_field_tag(:scope) %><br>
-  <%= label_tag(:redirect_uri, "Redirect URI:") %>
-  <%= text_field_tag(:redirect_uri) %><br>
-  <%= submit_tag("Search") %>
+  <%= hidden_field_tag(:response_type, "code") %>
+  <%= hidden_field_tag(:client_id, ENV["JAWBONE_CLIENT_ID"]) %>
+  <%= hidden_field_tag(:scope, "basic_read extended_info sleep_read") %>
+  <%= hidden_field_tag(:redirect_uri, "http://localhost:3000/auth") %>
+  <%= submit_tag("Sign In w/ Jawbone") %>
 <% end %>
