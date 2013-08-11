@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def new
-    @user = User.new
+
   end
   
   def create
@@ -26,6 +26,8 @@ class UsersController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @unit }
     end
+
+
   end
 
 end

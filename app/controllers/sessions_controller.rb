@@ -13,9 +13,10 @@ class SessionsController < ApplicationController
 
     if User.find_by_x_id(xid)
       user = User.find_by_x_id(xid)
+      user.access_token = access_token
+      user.save
       session[:user_id] = user.id
-      current_user
-      redirect_to user_path(current_user), notice: "Logged in!"
+      redirect_to user_path(user), notice: "Logged in!"
     else
       user = User.new
       user.first_name = @user["first"]

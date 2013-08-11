@@ -1,20 +1,21 @@
-<h1>Welcome <%= current_user.first_name %></h1>
-<%= link_to "Log Out", session_path("current"), method: "delete" %>
+<% if current_user %>
+  <h1>Welcome <%= current_user.first_name %></h1>
+  <%= link_to "Log Out", session_path("current"), method: "delete" %>
 
-<div>
-  You went to sleep last night at: <%= Time.at(@sleep_time).strftime "%l:%M %p" %>
-</div>
-<div>
-  You woke up this morning at: <%= Time.at(@wake_time).strftime "%l:%M %p" %>
-</div>
+  <div>
+    You went to sleep last night at: <%= Time.at(@sleep_time).strftime "%l:%M %p" %>
+  </div>
+  <div>
+    You woke up this morning at: <%= Time.at(@wake_time).strftime "%l:%M %p" %>
+  </div>
 
-<div>
-  You slept for <%= (@asleep_length/60/60) %>:<%= (@asleep_length/60%60) %>
-</div>
+  <div>
+    You slept for <%= (@asleep_length/60/60) %>:<%= (@asleep_length/60%60) %>
+  </div>
 
+  <%= image_tag "https://jawbone.com/#{@sleep_image}" %>
 
+  <%= image_tag "https://jawbone.com/#{@image}" %>
 
-<%= image_tag "https://jawbone.com/#{@sleep_image}" %>
-
-<%= image_tag "https://jawbone.com/#{@image}" %>
+<% end %>
 
