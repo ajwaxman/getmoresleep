@@ -55,6 +55,9 @@ GEM
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
     i18n (0.6.1)
+    icomoon-rails (0.1.0)
+      railties (>= 3.1.1)
+      sass-rails (>= 3.1.1)
     journey (1.0.4)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -122,6 +125,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   figaro
   httparty
+  icomoon-rails
   jquery-rails
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
