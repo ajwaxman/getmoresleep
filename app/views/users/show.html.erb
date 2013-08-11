@@ -10,7 +10,7 @@
   </div>
 
   <div>
-    You slept for <%= (@asleep_length/60/60) %>:<%= (@asleep_length/60%60) %>
+    You slept for <%= (asleep_hours(@asleep_length)) %>:<%= format_minutes(asleep_minutes(@asleep_length)) %>
   </div>
 
   <%= image_tag "https://jawbone.com/#{@sleep_image}" %>
