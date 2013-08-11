@@ -20,5 +20,5 @@
 # Learn more: http://github.com/javan/whenever
 
 every :day, :at => '9:00pm' do
-  rake "cron:sleep_text"
+  rake "cron:sleep_text_21"
 end
