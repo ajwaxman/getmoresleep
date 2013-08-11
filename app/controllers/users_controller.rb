@@ -30,6 +30,10 @@ class UsersController < ApplicationController
 
   end
 
+  def send_text(user)
+    user.send(text)
+  end
+
 end
 
 
