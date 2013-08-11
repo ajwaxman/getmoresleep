@@ -12,10 +12,6 @@
   </div>
 
   <div>
-    You slept for <%= (get_hours(did_user_sleep?)) %>:<%= add_leading_zero(get_minutes(did_user_sleep?)) %>
-  </div>
-
-  <div>
     You went to sleep last night at: <%= Time.at(@sleep_time).strftime "%l:%M %p" %>
   </div>
   <div>
