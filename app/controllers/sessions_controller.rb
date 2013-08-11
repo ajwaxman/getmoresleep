@@ -1,8 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    if current_user
-      @me = HTTParty.get("https://jawbone.com/nudge/api/users/@me", :headers => { "Authorization" => User.find(current_user).access_token })
-    end
+
   end
 
   def create
@@ -16,6 +14,7 @@ class SessionsController < ApplicationController
     if User.find_by_x_id(xid)
       user = User.find_by_x_id(xid)
       session[:user_id] = user.id
+      current_user
       redirect_to user_path(current_user), notice: "Logged in!"
     else
       user = User.new
@@ -26,6 +25,7 @@ class SessionsController < ApplicationController
       user.access_token = access_token
       if user.save
         session[:user_id] = user.id
+        current_user
         redirect_to root_url, notice: "Logged in!"
       else
         flash.now.alert = "Sorry something went wrong. Please try again."

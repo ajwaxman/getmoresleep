@@ -13,9 +13,10 @@ class UsersController < ApplicationController
   end
 
   def show
-      @me = HTTParty.get("https://jawbone.com/nudge/api/users/@me", :headers => { "Authorization" => current_user.access_token })
-      @image = @me.parsed_response["data"]["image"]
-      @sleep = HTTParty.get("https://jawbone.com/nudge/api/users/@me/sleeps", :headers => { "Authorization" => User.find(current_user).access_token })
+
+      @user = HTTParty.get("https://jawbone.com/nudge/api/users/@me", :headers => { "Authorization" => current_user.access_token })
+      @image = @user.parsed_response["data"]["image"]
+      @sleep = HTTParty.get("https://jawbone.com/nudge/api/users/@me/sleeps", :headers => { "Authorization" => current_user.access_token })
       @sleep_image = @sleep.parsed_response["data"]["items"][0]["snapshot_image"]
       @wake_time = @sleep.parsed_response["data"]["items"][0]["details"]["awake_time"]
       @sleep_time = @sleep.parsed_response["data"]["items"][0]["details"]["asleep_time"]
