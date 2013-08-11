@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
       if user.save
         session[:user_id] = user.id
         current_user
-        redirect_to root_url, notice: "Logged in!"
+        redirect_to user_path(user), notice: "Logged in!"
       else
         flash.now.alert = "Sorry something went wrong. Please try again."
       end
