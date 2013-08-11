@@ -2,6 +2,19 @@
   <h1>Welcome <%= current_user.first_name %></h1>
   <%= link_to "Log Out", session_path("current"), method: "delete" %>
 
+
+  <div>
+    How long ago was 2 AM? <%= (Time.now.to_i - Time.now.beginning_of_day.to_i)/60/60 %>
+  </div>
+
+  <div>
+    Did I sleep last night? <%= did_user_sleep_last_night? %>
+  </div>
+
+  <div>
+    You slept for <%= (get_hours(did_user_sleep?)) %>:<%= add_leading_zero(get_minutes(did_user_sleep?)) %>
+  </div>
+
   <div>
     You went to sleep last night at: <%= Time.at(@sleep_time).strftime "%l:%M %p" %>
   </div>
@@ -10,7 +23,7 @@
   </div>
 
   <div>
-    You slept for <%= (asleep_hours(@asleep_length)) %>:<%= format_minutes(asleep_minutes(@asleep_length)) %>
+    You slept for <%= (get_hours(@asleep_length)) %>:<%= add_leading_zero(get_minutes(@asleep_length)) %>
   </div>
 
   <%= image_tag "https://jawbone.com/#{@sleep_image}" %>
