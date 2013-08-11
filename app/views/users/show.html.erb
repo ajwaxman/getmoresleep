@@ -1,30 +1,38 @@
 <% if current_user %>
-  <h1>Welcome <%= current_user.first_name %></h1>
-  <%= link_to "Log Out", session_path("current"), method: "delete" %>
+  <div class="main-container">
+    <h1 class="logo-black">Go Get Some Sleep</h1>
+    <%= image_tag "https://jawbone.com/#{@image}", :size => "100x100", :class => "profile-image" %>
+    <h1>Welcome <%= current_user.first_name %>!</h1>
+    <%= link_to "Log Out", session_path("current"), method: "delete" %><br>
+
+    <%= link_to "Set your text settings!", set_time_path(current_user) %><br><br><br>
+
+    <div>
+      How long ago was 2 AM? <%= (Time.now.to_i - Time.now.beginning_of_day.to_i)/60/60 %>
+    </div>
+
+    <div>
+      Did I sleep last night? <%= did_user_sleep_last_night? %>
+    </div>
+
+    <div>
+      You went to sleep last night at: <%= Time.at(@sleep_time).strftime "%l:%M %p" %>
+    </div>
+    <div>
+      You woke up this morning at: <%= Time.at(@wake_time).strftime "%l:%M %p" %>
+    </div>
+
+    <div>
+      You slept for <%= (get_hours(@asleep_length)) %>:<%= add_leading_zero(get_minutes(@asleep_length)) %>
+    </div>
+
+    <div>
+      Las
+    </div>
+
+    <%= image_tag "https://jawbone.com/#{@sleep_image}", :size => "100x100" %>
 
 
-  <div>
-    How long ago was 2 AM? <%= (Time.now.to_i - Time.now.beginning_of_day.to_i)/60/60 %>
   </div>
-
-  <div>
-    Did I sleep last night? <%= did_user_sleep_last_night? %>
-  </div>
-
-  <div>
-    You went to sleep last night at: <%= Time.at(@sleep_time).strftime "%l:%M %p" %>
-  </div>
-  <div>
-    You woke up this morning at: <%= Time.at(@wake_time).strftime "%l:%M %p" %>
-  </div>
-
-  <div>
-    You slept for <%= (get_hours(@asleep_length)) %>:<%= add_leading_zero(get_minutes(@asleep_length)) %>
-  </div>
-
-  <%= image_tag "https://jawbone.com/#{@sleep_image}" %>
-
-  <%= image_tag "https://jawbone.com/#{@image}" %>
-
 <% end %>
 

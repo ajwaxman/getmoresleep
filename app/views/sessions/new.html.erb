@@ -1,5 +1,6 @@
 <% if current_user %>
 
+  
   <h1>Welcome <%= current_user.first_name %></h1><br>
   <%= link_to "Log Out", session_path("current"), method: "delete" %>
 

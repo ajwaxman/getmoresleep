@@ -34,6 +34,10 @@ class UsersController < ApplicationController
     user.send(text)
   end
 
+  def set_time
+    
+  end
+
 end
 
 

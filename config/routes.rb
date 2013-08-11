@@ -4,6 +4,11 @@ Getmoresleep::Application.routes.draw do
   resources :sessions
   resources :users
 
+  get 'users/:id/time' => 'users#set_time', :as => 'set_time'
+  post 'users/:id/time' => 'users#set_time', :as => 'set_time'
+
+
+
 
   root :to => 'sessions#new'
   match 'auth' => 'sessions#create'
